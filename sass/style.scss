@@ -1,3 +1,18 @@
+$list:"html","ANGULAR","SPRING","REACT";
+$language:"html","ANGULAR","SPRING","REACT";
+
+@function first($list){
+  @return nth($list,1)
+}
+@function last($list){
+  @return nth($list,length($list));
+}
+.test1{
+  content: first($list);
+}
+.test2{
+  content: last($list);
+}
 $primary-color: #ff752f;
 body{
   color: $primary-color}
@@ -56,10 +71,13 @@ $primary-color: #ff752f;
 .btn{
   @include inline-block(3px solid yellow)
 }
-@function background($primary-color){
-  @if ($primary-color!=white){
-    $text-color:white;
+@function background($color){
+  @if ($color==white){
+    @return black;
   }@else{
-    $text-color:red;
+    @return white;
   }
+}
+.btn-default{
+  color:background(white);
 }
